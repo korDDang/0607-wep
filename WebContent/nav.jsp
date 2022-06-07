@@ -11,6 +11,7 @@
 <ul>
 <li><a href="index.jsp">Home</a></li>
 <li><a href="memberinsert.jsp">회원정보 등록</a></li>
+<li><a href="moneyinsert.jsp">상품정보 등록</a></li>
 <li><a href="memberselect.jsp">회원정보 조회/수정</a></li>
 <li><a href="memberselect2.jsp">회원매출 조회</a></li>
 </ul>

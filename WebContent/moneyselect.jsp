@@ -36,42 +36,41 @@ try{
 <tr>
 <th>no</th>
 <th>회원번호</th>
-<th>회원이름</th>
 <th>판매번호</th>
 <th>단가</th>
 <th>수량</th>
 <th>가격</th>
 <th>상품코드</th>
 <th>판매일자</th>
+<th>구분</th>
 </tr>
 
 <%
 try{
-	String sql="select b.custno,b.custname,m.saleno,m.pcost,m.amount,m.price,m.pcode,to_char(m.sdate,'YYYY-MM-DD') from member0607 b, money0607 m  where m.custno=b.custno order by custno ";
+	String sql="select custno,saleno,pcost,amount,price,pcode,to_char(sdate,'YYYY-MM-DD') from money0607  order by custno ";
 	pstmt=conn.prepareStatement(sql);
 	rs=pstmt.executeQuery();
 	while(rs.next()){
 		String custno=rs.getString("custno");
-		String custname=rs.getString("custname");
 		String saleno=rs.getString("saleno");
 		String pcost=rs.getString("pcost");
 		String amount=rs.getString("amount");
 		String price=rs.getString("price");
 		String pcode=rs.getString("pcode");
-		String sdate=rs.getString(8);
+		String sdate=rs.getString(7);
 		a++;
 	
 %>
 <tr>
 <td><%=a %></td>
-<td><%=custno %></td>
-<td><%=custname %></td>
+<td><a href="moneyupdate.jsp?custno=<%=custno %>"><%=custno %></a></td>
 <td><%=saleno %></td>
 <td><%=pcost %></td>
 <td><%=amount %></td>
 <td><%=price %></td>
 <td><%=pcode %></td>
 <td><%=sdate %></td>
+<td><a href="moneydelete.jsp?custno=<%=custno %>"onclick="confirm('정말로 삭제하시겠습니까?')">삭제</a></td>
 </tr>
 <% 
 }
